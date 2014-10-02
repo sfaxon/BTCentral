@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		C3DF1BA219DCE5E30033C4EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BA119DCE5E30033C4EB /* AppDelegate.swift */; };
 		C3DF1BA519DCE5E30033C4EB /* BTCentral.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BA319DCE5E30033C4EB /* BTCentral.xcdatamodeld */; };
-		C3DF1BA719DCE5E30033C4EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BA619DCE5E30033C4EB /* ViewController.swift */; };
 		C3DF1BAA19DCE5E30033C4EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DF1BA819DCE5E30033C4EB /* Main.storyboard */; };
 		C3DF1BAC19DCE5E30033C4EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DF1BAB19DCE5E30033C4EB /* Images.xcassets */; };
 		C3DF1BAF19DCE5E30033C4EB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3DF1BAD19DCE5E30033C4EB /* LaunchScreen.xib */; };
 		C3DF1BBB19DCE5E30033C4EB /* BTCentralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BBA19DCE5E30033C4EB /* BTCentralTests.swift */; };
+		C3DF1BCA19DCE8DE0033C4EB /* PeripheralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BC919DCE8DE0033C4EB /* PeripheralTableViewController.swift */; };
+		C3DF1BCC19DCE9350033C4EB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DF1BCB19DCE9350033C4EB /* CoreBluetooth.framework */; };
+		C3DF1BCF19DCEA330033C4EB /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BCE19DCEA330033C4EB /* Peripheral.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +33,16 @@
 		C3DF1BA019DCE5E30033C4EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3DF1BA119DCE5E30033C4EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3DF1BA419DCE5E30033C4EB /* BTCentral.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BTCentral.xcdatamodel; sourceTree = "<group>"; };
-		C3DF1BA619DCE5E30033C4EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C3DF1BA919DCE5E30033C4EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3DF1BAB19DCE5E30033C4EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C3DF1BAE19DCE5E30033C4EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C3DF1BB419DCE5E30033C4EB /* BTCentralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCentralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DF1BB919DCE5E30033C4EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3DF1BBA19DCE5E30033C4EB /* BTCentralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCentralTests.swift; sourceTree = "<group>"; };
+		C3DF1BC419DCE8450033C4EB /* BTCentral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BTCentral-Bridging-Header.h"; sourceTree = "<group>"; };
+		C3DF1BC919DCE8DE0033C4EB /* PeripheralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewController.swift; sourceTree = "<group>"; };
+		C3DF1BCB19DCE9350033C4EB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		C3DF1BCE19DCEA330033C4EB /* Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DF1BCC19DCE9350033C4EB /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +67,7 @@
 		C3DF1B9319DCE5E30033C4EB = {
 			isa = PBXGroup;
 			children = (
+				C3DF1BCB19DCE9350033C4EB /* CoreBluetooth.framework */,
 				C3DF1B9E19DCE5E30033C4EB /* BTCentral */,
 				C3DF1BB719DCE5E30033C4EB /* BTCentralTests */,
 				C3DF1B9D19DCE5E30033C4EB /* Products */,
@@ -80,12 +87,13 @@
 			isa = PBXGroup;
 			children = (
 				C3DF1BA119DCE5E30033C4EB /* AppDelegate.swift */,
-				C3DF1BA619DCE5E30033C4EB /* ViewController.swift */,
 				C3DF1BA819DCE5E30033C4EB /* Main.storyboard */,
 				C3DF1BAB19DCE5E30033C4EB /* Images.xcassets */,
 				C3DF1BAD19DCE5E30033C4EB /* LaunchScreen.xib */,
-				C3DF1BA319DCE5E30033C4EB /* BTCentral.xcdatamodeld */,
+				C3DF1BCD19DCE9B30033C4EB /* Models */,
+				C3DF1BC819DCE8500033C4EB /* Controllers */,
 				C3DF1B9F19DCE5E30033C4EB /* Supporting Files */,
+				C3DF1BC419DCE8450033C4EB /* BTCentral-Bridging-Header.h */,
 			);
 			path = BTCentral;
 			sourceTree = "<group>";
@@ -113,6 +121,23 @@
 				C3DF1BB919DCE5E30033C4EB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C3DF1BC819DCE8500033C4EB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3DF1BC919DCE8DE0033C4EB /* PeripheralTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C3DF1BCD19DCE9B30033C4EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C3DF1BA319DCE5E30033C4EB /* BTCentral.xcdatamodeld */,
+				C3DF1BCE19DCEA330033C4EB /* Peripheral.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +240,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3DF1BA719DCE5E30033C4EB /* ViewController.swift in Sources */,
+				C3DF1BCA19DCE8DE0033C4EB /* PeripheralTableViewController.swift in Sources */,
 				C3DF1BA219DCE5E30033C4EB /* AppDelegate.swift in Sources */,
 				C3DF1BA519DCE5E30033C4EB /* BTCentral.xcdatamodeld in Sources */,
+				C3DF1BCF19DCEA330033C4EB /* Peripheral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +368,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BTCentral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BTCentral/BTCentral-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -352,9 +381,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BTCentral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BTCentral/BTCentral-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -429,7 +460,8 @@
 				C3DF1BA419DCE5E30033C4EB /* BTCentral.xcdatamodel */,
 			);
 			currentVersion = C3DF1BA419DCE5E30033C4EB /* BTCentral.xcdatamodel */;
-			path = BTCentral.xcdatamodeld;
+			name = BTCentral.xcdatamodeld;
+			path = ../BTCentral.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
