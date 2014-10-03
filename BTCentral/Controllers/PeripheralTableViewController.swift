@@ -22,10 +22,17 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
         loadData()
     }
     
+    // MARK: - buttons
     @IBAction func scan(sender: UIButton) {
         println("starting scan")
         manager.scanForPeripheralsWithServices(nil, options: nil)
     }
+    
+    @IBAction func clear(sender: UIButton) {
+        println("clearing data")
+        clearData()
+    }
+
     // MARK: - BlueTooth Callbacks
     func centralManagerDidUpdateState(central: CBCentralManager!) {
         println("hello: \(central)")
@@ -67,6 +74,21 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
         return cell
     }
     
+    // MARK: NSFetchedResultsController callbacks
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        switch type {
+        case .Insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+//        case .Update:
+//            self.tableView.reloadRowsAtIndexPaths(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .Delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        default:
+            return
+        }
+    }
+    
     // MARK: CoreData management
     func loadData() {
         println("loaded...")
@@ -95,6 +117,24 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
             println("Unresolved error \(error), \(error?.userInfo)")
             abort()
         }
+        self.tableView.reloadData()
+    }
+    
+    func clearData() {
+        var error: NSError? = nil
+        var request = NSFetchRequest(entityName: "Peripheral")
+        request.entity = NSEntityDescription.entityForName("Peripheral", inManagedObjectContext: self.cdh.backgroundContext!)
+        
+        let tapResults = self.cdh.managedObjectContext?.executeFetchRequest(request, error: nil)
+        
+        if let presentResults = tapResults {
+            if let castedResults = presentResults as? [Peripheral] {
+                for item in castedResults {
+                    self.cdh.managedObjectContext?.deleteObject(item)
+                }
+            }
+        }
+        self.cdh.managedObjectContext?.save(&error)
         self.tableView.reloadData()
     }
     

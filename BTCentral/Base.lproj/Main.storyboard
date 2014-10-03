@@ -40,6 +40,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ZBb-hT-nbA">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="hPi-rO-209">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="thX-O0-1e7">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clear:" destination="xCr-7Y-QwR" eventType="touchUpInside" id="Sf8-04-Czc"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="viE-bS-32i">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3tf-tN-mPB">
                                 <rect key="frame" x="-23" y="-15" width="133" height="30"/>
