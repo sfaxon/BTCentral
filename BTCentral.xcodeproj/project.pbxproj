@@ -16,6 +16,8 @@
 		C3DF1BCA19DCE8DE0033C4EB /* PeripheralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BC919DCE8DE0033C4EB /* PeripheralTableViewController.swift */; };
 		C3DF1BCC19DCE9350033C4EB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DF1BCB19DCE9350033C4EB /* CoreBluetooth.framework */; };
 		C3DF1BCF19DCEA330033C4EB /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BCE19DCEA330033C4EB /* Peripheral.swift */; };
+		C3DF1BD319DCFD390033C4EB /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BD219DCFD390033C4EB /* CoreDataHelper.swift */; };
+		C3DF1BD519DCFE0F0033C4EB /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF1BD419DCFE0F0033C4EB /* CoreDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		C3DF1BC919DCE8DE0033C4EB /* PeripheralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewController.swift; sourceTree = "<group>"; };
 		C3DF1BCB19DCE9350033C4EB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C3DF1BCE19DCEA330033C4EB /* Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		C3DF1BD219DCFD390033C4EB /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		C3DF1BD419DCFE0F0033C4EB /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 			children = (
 				C3DF1BA319DCE5E30033C4EB /* BTCentral.xcdatamodeld */,
 				C3DF1BCE19DCEA330033C4EB /* Peripheral.swift */,
+				C3DF1BD219DCFD390033C4EB /* CoreDataHelper.swift */,
+				C3DF1BD419DCFE0F0033C4EB /* CoreDataStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +246,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DF1BD519DCFE0F0033C4EB /* CoreDataStore.swift in Sources */,
+				C3DF1BD319DCFD390033C4EB /* CoreDataHelper.swift in Sources */,
 				C3DF1BCA19DCE8DE0033C4EB /* PeripheralTableViewController.swift in Sources */,
 				C3DF1BA219DCE5E30033C4EB /* AppDelegate.swift in Sources */,
 				C3DF1BA519DCE5E30033C4EB /* BTCentral.xcdatamodeld in Sources */,
@@ -442,6 +450,7 @@
 				C3DF1BC019DCE5E30033C4EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3DF1BC119DCE5E30033C4EB /* Build configuration list for PBXNativeTarget "BTCentralTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +459,7 @@
 				C3DF1BC319DCE5E30033C4EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

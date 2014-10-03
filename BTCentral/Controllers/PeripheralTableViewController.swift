@@ -8,19 +8,24 @@
 
 import UIKit
 import CoreBluetooth
+import CoreData
 
-class PeripheralTableViewController: UITableViewController, CBCentralManagerDelegate {
+class PeripheralTableViewController: UITableViewController, CBCentralManagerDelegate, NSFetchedResultsControllerDelegate {
+    
+    var manager: CBCentralManager!
+    var fetchedResultsController: NSFetchedResultsController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        manager = CBCentralManager(delegate: self, queue: nil)
+        manager.scanForPeripheralsWithServices(nil, options: nil)
+        loadData()
     }
     
+    @IBAction func scan(sender: UIButton) {
+        println("starting scan")
+        manager.scanForPeripheralsWithServices(nil, options: nil)
+    }
     // MARK: - BlueTooth Callbacks
     func centralManagerDidUpdateState(central: CBCentralManager!) {
         println("hello: \(central)")
@@ -28,6 +33,7 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
         println("periferal: \(peripheral)");
+        insertPeripheral(peripheral)
         
         peripheral.discoverServices(nil);
     }
@@ -35,26 +41,85 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
     func centralManager(central: CBCentralManager!, didRetrieveConnectedPeripherals peripherals: [AnyObject]!) {
         println("retrieve: \(peripherals)")
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.fetchedResultsController.sections![section].numberOfObjects
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var  cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        
+        var peripheral = self.fetchedResultsController.objectAtIndexPath(indexPath) as Peripheral
+        cell.textLabel?.text = peripheral.identifier
+        if (peripheral.name? != nil) {
+            cell.detailTextLabel?.text = peripheral.name
+        }
+        else {
+            cell.detailTextLabel?.text = ""
+        }
+        
+        return cell
+    }
+    
+    // MARK: CoreData management
+    func loadData() {
+        println("loaded...")
+        
+        NSLog("Loading Peripherals")
+        
+        var error: NSError? = nil
+        var fReq: NSFetchRequest = NSFetchRequest(entityName: "Peripheral")
+        
+        var sorter: NSSortDescriptor = NSSortDescriptor(key: "identifier" , ascending: false)
+        fReq.sortDescriptors = [sorter]
+        
+        fReq.returnsObjectsAsFaults = false
+        
+        var result = self.cdh.managedObjectContext!.executeFetchRequest(fReq, error:&error)
+        
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fReq,
+            managedObjectContext: self.cdh.managedObjectContext!,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        self.fetchedResultsController.delegate = self
+        
+        if !self.fetchedResultsController!.performFetch(&error) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            println("Unresolved error \(error), \(error?.userInfo)")
+            abort()
+        }
+        self.tableView.reloadData()
+    }
+    
+    func insertPeripheral(peripheral: CBPeripheral) {
+        // add Peripherals
+        println("Inserting Peripheral")
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        var newItem = NSEntityDescription.insertNewObjectForEntityForName("Peripheral", inManagedObjectContext: self.cdh.backgroundContext!) as Peripheral
+
+        newItem.identifier = peripheral.identifier.UUIDString
+        if (peripheral.name != nil) {
+            newItem.name = peripheral.name
+        }
+        println("Inserted New Peripheral for \(newItem.identifier)")
+
+        self.cdh.saveContext(self.cdh.backgroundContext!)
+        self.tableView.reloadData()
     }
+    
+    lazy var cdh: CoreDataHelper = {
+        let cdh = CoreDataHelper()
+        return cdh
+        }()
+    
+
 
     /*
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
@@ -110,5 +175,6 @@ class PeripheralTableViewController: UITableViewController, CBCentralManagerDele
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }
